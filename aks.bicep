@@ -15,10 +15,7 @@ resource aks 'Microsoft.ContainerService/managedClusters@2022-05-02-preview' = {
         osType: 'Linux'
         mode: 'System'
       }
-
+]
       }
-    }
-  }
-}
-
+    
 output controlPlaneFQDN string = aks.properties.fqdn
