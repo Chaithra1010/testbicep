@@ -33,7 +33,7 @@ resource aks 'Microsoft.ContainerService/managedClusters@2022-05-02-preview' = {
     type: 'SystemAssigned'
   }
   properties: {
-    dnsPrefix: dnsPrefix
+    dnsPrefix: aksdns
     agentPoolProfiles: [
       {
         name: 'agentpool'
@@ -43,15 +43,7 @@ resource aks 'Microsoft.ContainerService/managedClusters@2022-05-02-preview' = {
         osType: 'Linux'
         mode: 'System'
       }
-    ]
-    linuxProfile: {
-      adminUsername: linuxAdminUsername
-      ssh: {
-        publicKeys: [
-          {
-            keyData: sshRSAPublicKey
-          }
-        ]
+
       }
     }
   }
