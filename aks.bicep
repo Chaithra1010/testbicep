@@ -1,6 +1,6 @@
 resource aksCluster 'Microsoft.ContainerService/managedClusters@2021-03-01' = {
   name: 'testaks'
-  location: location
+  location: 'westeurope'
   identity: {
     type: 'SystemAssigned'
   }
