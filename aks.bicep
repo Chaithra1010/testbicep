@@ -1,7 +1,7 @@
 
 resource aks 'Microsoft.ContainerService/managedClusters@2022-05-02-preview' = {
   name: 'aks101cluster'
-  location: 'westeurope'
+  location: westeurope
   identity: {
     type: 'SystemAssigned'
   }
@@ -17,5 +17,6 @@ resource aks 'Microsoft.ContainerService/managedClusters@2022-05-02-preview' = {
       }
 ]
       }
+}
     
 output controlPlaneFQDN string = aks.properties.fqdn
