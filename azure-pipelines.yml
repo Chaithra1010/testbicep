@@ -3,7 +3,6 @@ trigger:
 
 variables:
   resourceGroupName: 'testrg1'
-  location: 'westeurope'
   dnsprefix: 'aksdns'
   templateFile: 'aks.bicep'
 
