@@ -1,22 +1,23 @@
-
-resource aks 'Microsoft.ContainerService/managedClusters@2022-05-02-preview' = {
-  name: 'aks101cluster'
-  location: westeurope
+resource aksCluster 'Microsoft.ContainerService/managedClusters@2021-03-01' = {
+  name: 'testaks'
+  location: location
   identity: {
     type: 'SystemAssigned'
   }
   properties: {
-    dnsPrefix: aksdns
+    kubernetesVersion: '1.27'
+    dnsPrefix: 'dnsprefix'
+    enableRBAC: true
     agentPoolProfiles: [
       {
         name: 'agentpool'
         count: 3
-        vmSize: standard_d2s_v3
+        vmSize: 'Standard_DS2_v2'
         osType: 'Linux'
         mode: 'System'
       }
-]
-      }
-}
-    
-output controlPlaneFQDN string = aks.properties.fqdn
+    ]
+   
+    }
+  }
+ 
