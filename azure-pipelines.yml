@@ -1,0 +1,34 @@
+trigger:
+- main
+
+variables:
+  resourceGroupName: 'testrg1'
+  location: 'westeurope'
+  templateFile: 'aks.bicep'
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'AKSCICDservice connection'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      az --version
+                  az group create --name $(resourceGroupName) --location $(location)
+                  az deployment group what-if --resource-group $(resourceGroupName) \
+                     --template-file $(templateFile)
+
+- task: AzureCLI@2
+  inputs:
+      azureSubscription: 'AKSCICDservice connection'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        az deployment group create --resource-group $(resourceGroupName) \
+                       --template-file $(templateFile)
+
+
